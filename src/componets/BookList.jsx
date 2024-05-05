@@ -5,7 +5,7 @@ function BookList() {
     {
       id: 1,
       title: 'JavaScript—The Comprehensive Guide',
-      author: 'Philip Ackermann',
+      author: '', //Philip Ackermann
       isbn: '978-3836286299',
       rating: 5,
     },
@@ -24,6 +24,17 @@ function BookList() {
       rating: 5,
     },
   ]
+
+  if (books.length === 0) {
+    return (
+      <>
+        <div>
+          <h3>BOOKS NOT FOUND!</h3>
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
       <table>
@@ -39,9 +50,9 @@ function BookList() {
           {books.map((book) => (
             <tr key={book.id}>
               <td>{book.title}</td>
-              <td>{book.author}</td>
+              <td>{book.author ? book.author : "Unkown"}</td>
               <td>{book.isbn}</td>
-              <td>{book.rating}</td>
+              <td>{book.rating && '*'.repeat(book.rating)}</td>
             </tr>
           ))}
         </tbody>
